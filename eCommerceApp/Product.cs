@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
+// Product.cs
 namespace eCommerceApp
 {
     public class Product
@@ -16,6 +18,14 @@ namespace eCommerceApp
 
         public Product(int productId, string productName, decimal price, int stock)
         {
+            if (productId < 1 || productId > 1000)
+                throw new ArgumentOutOfRangeException(nameof(productId), "ProductID must be between 1 and 1000.");
+
+            if (price < 1 || price > 5000)
+                throw new ArgumentOutOfRangeException(nameof(price), "Price must be between $1 and $5000.");
+
+            if (stock < 1 || stock > 1000)
+                throw new ArgumentOutOfRangeException(nameof(stock), "Stock must be between 1 and 1000.");
             ProductID = productId;
             ProductName = productName;
             Price = price;
